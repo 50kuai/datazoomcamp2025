@@ -17,7 +17,7 @@ SELECT
     END AS distance_range,
     COUNT(*) AS trip_count
 FROM 
-    green_taxi
+    green_taxi_data
 WHERE 
     lpep_dropoff_datetime >= '2019-10-01 00:00:00' -- Include trips ending on or after October 1, 2019
     AND lpep_dropoff_datetime < '2019-11-01 00:00:00' -- Exclude trips ending on or after November 1, 2019
@@ -26,6 +26,7 @@ GROUP BY
 ORDER BY 
     distance_range;
 ```
+<img width="1225" alt="Screenshot 2025-01-25 at 11 32 55 AM" src="https://github.com/user-attachments/assets/5d1e0c05-5020-49c3-af06-ca517002f430" />
 
 ---
 
@@ -38,12 +39,13 @@ SELECT
     DATE(lpep_pickup_datetime) AS pickup_day, 
     MAX(trip_distance) AS longest_trip_distance
 FROM 
-    green_taxi
+    green_taxi_data
 GROUP BY 
     lpep_pickup_datetime
 ORDER BY 
     longest_trip_distance DESC;
 ```
+<img width="873" alt="Screenshot 2025-01-25 at 11 33 44 AM" src="https://github.com/user-attachments/assets/b7cedce9-5a38-482a-bddd-7a1c053715be" />
 
 ---
 
@@ -57,7 +59,7 @@ SELECT
     "PULocationID", 
     SUM(gt.total_amount) AS total_amount_for_day
 FROM 
-    green_taxi gt
+    green_taxi_data gt
 JOIN 
     taxi_zone tz 
     ON "PULocationID" = "LocationID" 
@@ -70,6 +72,7 @@ HAVING
 ORDER BY 
     total_amount_for_day DESC;
 ```
+<img width="932" alt="Screenshot 2025-01-25 at 11 34 07 AM" src="https://github.com/user-attachments/assets/75e8e9f0-2658-4af9-b618-73d09fe59a5a" />
 
 ---
 
@@ -82,7 +85,7 @@ SELECT
     tz_drop."Zone" AS dropoff_zone, 
     MAX(gt."tip_amount") AS largest_tip
 FROM 
-    green_taxi gt
+    green_taxi_data gt
 JOIN 
     taxi_zone tz_pickup
     ON gt."PULocationID" = tz_pickup."LocationID"
@@ -98,3 +101,4 @@ ORDER BY
     largest_tip DESC
 LIMIT 1;
 ```
+<img width="1021" alt="Screenshot 2025-01-25 at 11 34 31 AM" src="https://github.com/user-attachments/assets/70fc8878-32fd-47cb-8358-e9a4e6f871c3" />
