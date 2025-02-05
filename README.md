@@ -13,6 +13,7 @@ FROM green_tripdata
 WHERE filename LIKE 'green_tripdata_2020-%';
 <img width="705" alt="Screenshot 2025-02-04 at 9 02 24 PM" src="https://github.com/user-attachments/assets/51c60977-b2a5-4652-8d8c-aab7749f90bf" />
 
+<img width="1106" alt="Screenshot 2025-02-04 at 9 17 55 PM" src="https://github.com/user-attachments/assets/83b45859-cac6-43fc-a4bc-d21dee4605a3" />
 
 
 # datazoomcamp2025_homework 1
